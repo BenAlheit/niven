@@ -1,0 +1,19 @@
+#include <iostream>
+#include <ctime>
+
+int main() {
+    struct timespec ts;
+
+    // Get the current time from CLOCK_REALTIME
+    if (clock_gettime(CLOCK_REALTIME, &ts) == 0) {
+        std::cout << "Current time: " 
+                  << ts.tv_sec << " seconds and " 
+                  << ts.tv_nsec << " nanoseconds since the epoch." 
+                  << std::endl;
+    } else {
+        perror("clock_gettime failed");
+        return 1;
+    }
+
+    return 0;
+}

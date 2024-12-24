@@ -1,0 +1,6 @@
+.cache/
+.nvim/
+.teleignore
+compile_commands.json
+out/
+
