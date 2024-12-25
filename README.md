@@ -11,7 +11,7 @@ A simple and light-weight C++ profiling tool.
 
 ## Minimal usage example
 
-There are a few simple steps to profiling a program using niven:
+There are a few simple steps to profiling a program using Niven:
  - Include the Timer header file `#include <niven/Timer.h>`
     * This will create a static Timer object named `nivenTimer` -- you should not have a variable named `nivenTimer` anywhere else in your project.
  - Put anything to be timed between the calls `nivenTimer.start()` and `nivenTimer.end()`; that is, a skeleton program should look as follows:
@@ -28,10 +28,8 @@ int main(){
 }
 
 ```
-
-
-
-
+ - Niven provides two macros that allow you to time a function and a code block; these are, `NivenTimeFunction` and `NivenTimeBlock(<user-given-label>)`, respectively. The `NivenTimeFunction` macro uses the function name as a label, whereas `NivenTimeBlock` must be provided with a label from the user. Each of these macros will time from the line where the macro was called up to the end of the current scope. 
+ - Finally, timing data can be printed to stdout using `nivenTimer.print()` and/or it can be written to a json file using `nivenTimer.dump_json("your_file_name.json")`. A complete demonstration of the functionality is provided in the following minimal example:
 ```C++
 #include <niven/Timer.h>
 
