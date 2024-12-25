@@ -25,8 +25,6 @@ int main() {
     NivenTimeBlock("outside loop");
     for (unsigned int i = 0; i < 10000; i++) {
       NivenTimeBlock("loop");
-      { NivenTimeBlock("sub 1"); }
-      { NivenTimeBlock("sub 2"); }
 
       double a = 2 * 2;
     }
