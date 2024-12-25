@@ -132,6 +132,7 @@ You might notice that the total running time of the program is much less in this
 
 
 ## Installing Niven
+Installation is really standard:
 ```bash
 git clone git@github.com:BenAlheit/niven.git
 ```
@@ -156,6 +157,7 @@ make install
 (you may need sudo for that last one)
 
 ## Using Niven in your project with CMAKE
+Using it in your cmake project is really standard too:
 ```cmake
 cmake_minimum_required(VERSION 3.15)
 project(<your-project-name>)
@@ -167,3 +169,8 @@ find_package(niven REQUIRED)
 add_executable(<your-project-name> your_cpp_file.cpp)
 target_link_libraries(<your-project-name> PUBLIC niven)
 ```
+
+## TODOs
+
+- Optimize library
+- Add support for MPI
