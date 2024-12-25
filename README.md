@@ -132,6 +132,28 @@ You might notice that the total running time of the program is much less in this
 
 
 ## Installing Niven
+```bash
+git clone git@github.com:BenAlheit/niven.git
+```
+```bash
+cd niven
+```
+```bash
+mkdir build
+```
+```bash
+cd build
+```
+```bash
+cmake ..
+```
+```bash
+make
+```
+```bash
+make install
+```
+(you may need sudo for that last one)
 
 ## Using Niven in your project with CMAKE
 ```cmake
