@@ -26,7 +26,7 @@ public:
   TimerPawn<ui_> time_section(const string &label){
         CodeBlock<ui_>& section = this->current_block->get_create(label);
         current_block = &section;
-        return TimerPawn(section, *this);
+        return TimerPawn<ui_>(section, *this);
     };
   void start_section(const string &label);
   void end_section();

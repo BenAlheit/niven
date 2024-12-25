@@ -128,3 +128,20 @@ int main() {
 }
 ```
 You might notice that the total running time of the program is much less in this case than the earlier case (475 nanoseconds vs. 1046132 nanoseconds) which indicates that almost all the compute time of the previous program was due to taking timing measurements.
+
+
+
+## Installing Niven
+
+## Using Niven in your project with CMAKE
+```cmake
+cmake_minimum_required(VERSION 3.15)
+project(<your-project-name>)
+
+# Find installed library
+find_package(niven REQUIRED)
+
+# Link library
+add_executable(<your-project-name> your_cpp_file.cpp)
+target_link_libraries(<your-project-name> PUBLIC niven)
+```

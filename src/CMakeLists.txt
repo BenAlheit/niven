@@ -26,3 +26,23 @@ set_target_properties(niven PROPERTIES
 
 # Link dependencies (if any)
 # target_link_libraries(my_library PRIVATE some_dependency)
+
+
+# Install library
+install(TARGETS niven
+    EXPORT niven_targets
+    LIBRARY DESTINATION lib
+    ARCHIVE DESTINATION lib
+    RUNTIME DESTINATION bin
+    INCLUDES DESTINATION include
+)
+
+# Install headers
+install(DIRECTORY ../include/ DESTINATION include)
+
+# Export target for package configuration
+install(EXPORT niven_targets
+    FILE nivenConfig.cmake
+    NAMESPACE niven::
+    DESTINATION lib/cmake/niven
+)
