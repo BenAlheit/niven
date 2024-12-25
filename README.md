@@ -67,8 +67,7 @@ int main() {
   return 0;
 }
 ```
-
-Will result in an output (in stdout because of `timer.print()` and `profile_data.json` because of `timer.dump_json("profile_data.json")`) of
+ - The data is stored and displayed in a tree structure so the above example will result in an output (in stdout because of `timer.print()` and `profile_data.json` because of `timer.dump_json("profile_data.json")`) of
 ```
 {
 "label": "total",
@@ -109,3 +108,4 @@ Will result in an output (in stdout because of `timer.print()` and `profile_data
 ]
 }
 ```
+- Here `label` is the name of the function that was timed if `NivenTimeFunction` was used and the user provided label if `NivenTimeBlock` was used; `n_calls` is the number of times the function (or code block) was called; `nanoseconds` is the number of nanoseconds taken to run the code in that scope; `pct_of_parent` is the percentage of time that the direct parent of the current code block spent within the current code block (that is, `100 * parent.nanoseconds/child.nanoseconds`); and `children` is a list of the children blocks of the current block.
