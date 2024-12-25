@@ -62,8 +62,4 @@ void Timer<ui_>::dump_json(const string & output_pth)
 
 template class Timer<uint64_t>;
 
-#define NameConcat2(A, B) A##B
-#define NameConcat(A, B) NameConcat2(A, B)
-#define NivenTimeBlock(Name) profile_block NameConcat(Block, __LINE__)(Name, __COUNTER__ + 1);
-#define NivenTimeFunction NivenTimeBlock(__func__)
 } // namespace niven

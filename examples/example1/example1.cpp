@@ -21,7 +21,7 @@ void some_function() {
 
 int main() {
 
-  timer.start();
+  nivenTimer.start();
   {
     NivenTimeBlock("outside loop");
     for (unsigned int i = 0; i < 10000; i++) {
@@ -31,9 +31,9 @@ int main() {
     }
   }
   some_function();
-  timer.end();
-  timer.print();
-  timer.dump_json("test.json");
+  nivenTimer.end();
+  nivenTimer.print();
+  nivenTimer.dump_json("test.json");
 
   return 0;
 }

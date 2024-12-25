@@ -68,7 +68,7 @@ int main() {
 }
 ```
  - The data is stored and displayed in a tree structure so the above example will result in an output (in stdout because of `timer.print()` and `profile_data.json` because of `timer.dump_json("profile_data.json")`) of
-```
+```json
 {
 "label": "total",
 "n_calls": 1,
@@ -109,3 +109,22 @@ int main() {
 }
 ```
 - Here, `label` is the name of the function that was timed if `NivenTimeFunction` was used and the user provided label if `NivenTimeBlock` was used; `n_calls` is the number of times the function (or code block) was called; `nanoseconds` is the number of nanoseconds taken to run the code in that scope; `pct_of_parent` is the percentage of time that the direct parent of the current code block spent within the current code block (that is, `100 * parent.nanoseconds/child.nanoseconds`); and `children` is a list of the children blocks of the current block.
+- Unfortunately, timing takes time. If you time very short-running pieces of code then it is quite possible that taking the time measurement takes longer than the piece of code you are actually timing. In this case, the reported measurements will not be a good representation of reality. A good way to check if fine grained timing is adding to the compute time of your code significantly is simply turn-off all timing except for that at the outer most scope and compare the running time of the program with and without timing. This can be done in Niven by define the macro `DEACTIVATE_NIVEN` before including `niven/Timer.h` as follows:
+```C++
+#define DEACTIVATE_NIVEN
+#include <niven/Timer.h>
+// ...
+// ...
+// ...
+```
+- Doing this with the example above produces an output of 
+```json
+{
+"label": "total",
+"n_calls": 1,
+"nanoseconds": 475,
+"pct_of_parent": 100,
+"children": [ ]
+}
+```
+You might notice that the total running time of the program is much less in this case than the earlier case (475 nanoseconds vs. 1046132 nanoseconds) which indicates that almost all the compute time of the previous program was due to taking timing measurements.

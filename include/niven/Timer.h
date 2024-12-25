@@ -62,14 +62,25 @@ template <typename ui_> struct TimerPawn {
 };
 
 } // namespace niven
-//
 
-static niven::Timer<uint64_t> timer;
+static niven::Timer<uint64_t> nivenTimer;
 #define NameConcat2(A, B) A##B
 #define NameConcat(A, B) NameConcat2(A, B)
-#define NivenTimeBlock(Name) niven::TimerPawn<uint64_t> NameConcat(Pawn, __LINE__) = timer.time_section(Name);
+
+#ifndef DEACTIVATE_NIVEN
+#define NivenTimeBlock(Name) niven::TimerPawn<uint64_t> NameConcat(Pawn, __LINE__) = nivenTimer.time_section(Name);
+#else //DEACTIVATE_NIVEN
+#define NivenTimeBlock(...) 
+#endif // !DEACTIVATE_NIVEN
+
 #define NivenTimeFunction NivenTimeBlock(__func__)
 
-        // niven::TimerPawn<uint64_t> pawn1 = timer.time_section("outside loop");
+// #define NivenTimeBlock(Name) niven::TimerPawn<uint64_t> NameConcat(Pawn, __LINE__) = nivenTimer.time_section(Name);
+// #define NivenTimeFunction NivenTimeBlock(__func__)
+
+// #define TimeBlock(...)
+// #define PrintAnchorData(...)
+// #define ProfilerEndOfCompilationUnit
+
 
 #endif // INCLUDE_INCLUDE_TIMER_H_
