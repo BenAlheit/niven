@@ -40,10 +40,50 @@ int main() {
   some_function();
   timer.end();
   timer.print();
+  timer.dump_json("profile_data.json");
 
   return 0;
 }
 ```
 
-
-
+Will result in an output (in stdout because of `timer.print()` and `profile_data.json` because of `timer.dump_json("profile_data.json")`) of
+```
+{
+"label": "total",
+"n_calls": 1,
+"nanoseconds": 1046132,
+"pct_of_parent": 100,
+"children": [
+        {
+        "label": "outside loop",
+        "n_calls": 1,
+        "nanoseconds": 528704,
+        "pct_of_parent": 50,
+        "children": [
+                {
+                "label": "loop",
+                "n_calls": 10000,
+                "nanoseconds": 199672,
+                "pct_of_parent": 37,
+                "children": [ ]
+                }
+        ]
+        },
+        {
+        "label": "some_function",
+        "n_calls": 1,
+        "nanoseconds": 515028,
+        "pct_of_parent": 49,
+        "children": [
+                {
+                "label": "nested_function",
+                "n_calls": 10000,
+                "nanoseconds": 184318,
+                "pct_of_parent": 35,
+                "children": [ ]
+                }
+        ]
+        }
+]
+}
+```

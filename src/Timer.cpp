@@ -2,6 +2,7 @@
 #include <cstdint>
 #include <memory>
 #include <iostream>
+#include <fstream>
 
 namespace niven {
 
@@ -9,7 +10,15 @@ template <typename ui_>
 void Timer<ui_>::print()
 {
     // cout << "Total time: " << this->root->get_ns_ellapsed() << endl;
-    this->root->print();
+    // this->root->print();
+
+    string json_string = "";
+    this->root->write_json_string(json_string);
+    cout << json_string << endl;
+    // ofstream out(output_pth);
+    // out << json_string;
+    // out.close();
+
 }
 
 template <typename ui_> void Timer<ui_>::start() {
@@ -38,6 +47,18 @@ template <typename ui_> void Timer<ui_>::end() {
 template <typename ui_> void Timer<ui_>::start_section(const string &label) {}
 template <typename ui_> void Timer<ui_>::end_section() {}
 template <typename ui_> void Timer<ui_>::time_function() {}
+
+template <typename ui_>
+void Timer<ui_>::dump_json(const string & output_pth)
+{
+
+    string json_string = "";
+    this->root->write_json_string(json_string);
+    ofstream out(output_pth);
+    out << json_string;
+    out.close();
+
+}
 
 template class Timer<uint64_t>;
 

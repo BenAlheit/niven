@@ -32,6 +32,7 @@ public:
   void end_section();
   void time_function();
   void print();
+  void dump_json(const string & output_pth);
 
 private:
   bool running = false;

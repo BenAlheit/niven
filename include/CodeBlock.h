@@ -20,6 +20,12 @@ public:
   CodeBlock &operator=(CodeBlock &&) = default;
   CodeBlock &operator=(const CodeBlock &) = default;
   ~CodeBlock() = default;
+
+
+
+    void write_json_string(string & json_string,
+                           const string & indent="") const;
+
   ui_ get_pct_of_partent() const {
     if (this->parent)
       return 100 * this->nano_seconds / this->parent->get_ns_ellapsed();
@@ -34,7 +40,6 @@ public:
     for (const auto &child : children)
       child.second.print(prefix + "\t");
   }
-  // TimerPawn<ui_> get_pawn() { return TimerPawn(*this); };
 
   CodeBlock<ui_> &get_create(const string &label) {
     if (children.empty() || children.find(label) == children.end())

@@ -31,5 +31,39 @@ template <typename ui_> ui_ CodeBlock<ui_>::get_time() {
 //   this->nano_seconds += this->get_time() - this->last_time;
 // }
 
+template <typename ui_>
+void CodeBlock<ui_>::write_json_string(string &json_string,
+                                       const string &indent) const {
+
+  // string indent = "";
+  // for(unsigned int i=0; i<indent_level; i++)
+  //     indent += "\t";
+
+  json_string += indent + "{\n";
+  json_string += indent + "\"label\": \"" + this->label + "\",\n";
+  json_string += indent + "\"n_calls\": " + to_string(this->calls) + ",\n";
+  json_string +=
+      indent + "\"nanoseconds\": " + to_string(this->nano_seconds) + ",\n";
+  json_string +=
+      indent + "\"pct_of_parent\": " + to_string(this->get_pct_of_partent()) + ",\n";
+
+  json_string += indent + "\"children\": [\n";
+
+  for (const auto &child : this->children) {
+    child.second.write_json_string(json_string, indent + "\t");
+    json_string += ",\n";
+  }
+  if (not this->children.empty()) {
+    json_string.pop_back();
+    json_string.pop_back();
+    json_string += "\n" + indent + "]\n";
+  } else {
+    json_string.pop_back();
+    json_string += " ]\n";
+  }
+
+  json_string += indent + "}";
+}
+
 template class CodeBlock<uint64_t>;
 } // namespace niven

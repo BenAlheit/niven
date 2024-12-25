@@ -32,6 +32,7 @@ int main() {
   some_function();
   timer.end();
   timer.print();
+  timer.dump_json("test.json");
 
   return 0;
 }
