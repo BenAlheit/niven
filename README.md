@@ -1,9 +1,13 @@
 # Niven
 
-A C++ profiling tool
+A light-weight C++ profiling tool. 
 
 
-![alt text](https://github.com/BenAlheit/niven/blob/main/resources/niven.png?raw=true)
+<!-- ![alt text](https://github.com/BenAlheit/niven/blob/main/resources/niven.png?raw=true) -->
+
+<p align="center">
+  <img src="https://github.com/BenAlheit/niven/blob/main/resources/niven.png?raw=true" alt="Niven image"/>
+</p>
 
 ## Minimal usage example
 

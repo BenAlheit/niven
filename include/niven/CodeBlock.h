@@ -3,7 +3,6 @@
 
 #include <map>
 #include <string>
-// #include <vector>
 #include <iostream>
 
 namespace niven {
@@ -55,8 +54,6 @@ private:
 
   CodeBlock<ui_> *parent;
   map<string, CodeBlock<ui_>> children;
-
-  // ui_ last_time;
 
   ui_ nano_seconds = 0;
   ui_ calls = 0;
