@@ -1,4 +1,4 @@
-#include "CodeBlock.h"
+#include "niven/CodeBlock.h"
 #include <cstdint>
 
 #include <ctime>
@@ -15,7 +15,6 @@ template <typename ui_> ui_ CodeBlock<ui_>::get_time() {
     //           << ts.tv_nsec << " nanoseconds since the epoch."
     //           << std::endl;
     return ts.tv_nsec;
-    // this->last_time = ts.tv_nsec;
   } else {
     // perror("clock_gettime failed");
     // TODO throw exception
@@ -23,21 +22,9 @@ template <typename ui_> ui_ CodeBlock<ui_>::get_time() {
   }
 }
 
-// template <typename ui_> void CodeBlock<ui_>::tick() {
-//   this->last_time = this->get_time();
-//   this->calls++;
-// }
-// template <typename ui_> void CodeBlock<ui_>::tok() {
-//   this->nano_seconds += this->get_time() - this->last_time;
-// }
-
 template <typename ui_>
 void CodeBlock<ui_>::write_json_string(string &json_string,
                                        const string &indent) const {
-
-  // string indent = "";
-  // for(unsigned int i=0; i<indent_level; i++)
-  //     indent += "\t";
 
   json_string += indent + "{\n";
   json_string += indent + "\"label\": \"" + this->label + "\",\n";

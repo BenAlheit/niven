@@ -12,7 +12,8 @@ add_library(niven ${SOURCES})
 # Set include directories for the target
 target_include_directories(niven
     PUBLIC
-        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include/niven>
+        # $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include/niven>
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
         $<INSTALL_INTERFACE:include>
 )
 

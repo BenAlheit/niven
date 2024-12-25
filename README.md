@@ -1,6 +1,6 @@
 # Niven
 
-A light-weight C++ profiling tool. 
+A simple and light-weight C++ profiling tool. 
 
 
 <!-- ![alt text](https://github.com/BenAlheit/niven/blob/main/resources/niven.png?raw=true) -->
@@ -11,9 +11,29 @@ A light-weight C++ profiling tool.
 
 ## Minimal usage example
 
+There are a few simple steps to profiling a program using niven:
+ - Include the Timer header file `#include <niven/Timer.h>`
+    * This will create a static Timer object named `nivenTimer` -- you should not have a variable named `nivenTimer` anywhere else in your project.
+ - Put anything to be timed between the calls `nivenTimer.start()` and `nivenTimer.end()`; that is, a skeleton program should look as follows:
+ ```C++
+#include <niven/Timer.h>
+
+int main(){
+    nivenTimer.start()
+    //
+    // ... your code goes here.
+    //
+    nivenTimer.end()
+    return 0;
+}
+
+```
+
+
+
 
 ```C++
-#include "Timer.h"
+#include <niven/Timer.h>
 
 void nested_function() {
   NivenTimeFunction;
