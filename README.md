@@ -1,6 +1,6 @@
 # Niven
 
-A simple, light-weight, header only C++ profiling tool with no dependencies. 
+A simple and light-weight C++ profiling tool with no dependencies. 
 
 
 <!-- ![alt text](https://github.com/BenAlheit/niven/blob/main/resources/niven.png?raw=true) -->
